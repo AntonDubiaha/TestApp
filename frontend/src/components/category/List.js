@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { getCategories, deleteCategory, toggleCategory } from '../../actions/categories';
+import { getCategories, deleteCategory, putCategory } from '../../actions/categories';
 
 import { Fragment } from 'react';
 
@@ -10,7 +10,7 @@ class List extends Component {
   static propTypes = {
     categories: PropTypes.array.isRequired,
     getCategories: PropTypes.array.isRequired,
-    toggleCategory: PropTypes.array.isRequired,
+    putCategory: PropTypes.array.isRequired,
     deleteCategory: PropTypes.array.isRequired
   };
 
@@ -26,7 +26,7 @@ class List extends Component {
           <ul key={ThirdCategory.id}>
             <li>{ThirdCategory.name}</li>
             <li>{ThirdCategory.sub_categories}</li>
-            <li><button onChange={this.props.toggleCategory.bind(this, ThirdCategory)}>Change</button></li>
+            <li><button onChange={this.props.putCategory.bind(this, ThirdCategory)}>Change</button></li>
             <li><button onClick={this.props.deleteCategory.bind(this, ThirdCategory.id)}>Delete</button></li>
           </ul>
         ))}
@@ -40,4 +40,4 @@ const mapStateToProps = (state) => ({
   categories: state.categories.categories
 });
 
-export default connect(mapStateToProps, { getCategories, deleteCategory, toggleCategory })(List);
+export default connect(mapStateToProps, { getCategories, deleteCategory, putCategory })(List);

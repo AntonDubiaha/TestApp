@@ -1,4 +1,4 @@
-import { GET_CATEGORY_LIST, DELETE_CATEGORY, ADD_CATEGORY, TOGGLE_CATEGORY } from "../actions/types";
+import { GET_CATEGORY_LIST, DELETE_CATEGORY, ADD_CATEGORY, PUT_CATEGORY } from "../actions/types";
 
 const initialState = {
     categories: []
@@ -16,7 +16,7 @@ export default function (state = initialState, action) {
                 ...state,
                 categories: state.categories.filter(ThirdCategory => ThirdCategory.id != action.payload)
                 };
-        case TOGGLE_CATEGORY:
+        case PUT_CATEGORY:
             return {
                 ...state,
                 categories: [...state.categories]

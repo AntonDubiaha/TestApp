@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_CATEGORY_LIST, DELETE_CATEGORY, ADD_CATEGORY, TOGGLE_CATEGORY } from '../actions/types';
+import { GET_CATEGORY_LIST, DELETE_CATEGORY, ADD_CATEGORY, PUT_CATEGORY } from '../actions/types';
 
 axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
 axios.defaults.xsrfCookieName = 'csrftoken';
@@ -24,11 +24,11 @@ export const deleteCategory = (id) => dispatch => {
         }).catch(error => console.log(error));
 };
 
-export const toggleCategory = (ThirdCategory) => dispatch => {
+export const putCategory = (ThirdCategory) => dispatch => {
     axios.put(`api/sub_categories/${ThirdCategory.id}/`, ThirdCategory)
         .then(result => {
             dispatch({
-                type: TOGGLE_CATEGORY,
+                type: PUT_CATEGORY,
                 payload: result.data
             });
         }).catch(error => console.log(error));

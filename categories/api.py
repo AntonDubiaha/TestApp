@@ -1,7 +1,14 @@
-from .models import ThirdCategory, FirstCategory
+from .models import ThirdCategory, FirstCategory, SecondCategory
 from rest_framework import viewsets, permissions
-from .serializers import ThirdCategorySerializer, FirstCategorySerializer
+from .serializers import ThirdCategorySerializer, FirstCategorySerializer, SecondCategorySerializer
 
+
+class FirstCategoryViewSet(viewsets.ModelViewSet):
+    queryset = FirstCategory.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = FirstCategorySerializer
 
 class ThirdCategoryViewSet(viewsets.ModelViewSet):
     queryset = ThirdCategory.objects.all()
@@ -9,11 +16,13 @@ class ThirdCategoryViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = ThirdCategorySerializer
-    
-class FirstCategoryViewSet(viewsets.ModelViewSet):
-    queryset = FirstCategory.objects.all()
+
+
+class SecondCategoryViewSet(viewsets.ModelViewSet):
+    queryset = SecondCategory.objects.all()
     permission_classes = [
         permissions.AllowAny
     ]
-    serializer_class = FirstCategorySerializer
+    serializer_class = SecondCategorySerializer
+
     
